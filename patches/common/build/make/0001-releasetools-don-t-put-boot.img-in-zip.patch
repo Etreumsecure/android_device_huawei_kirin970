@@ -1,0 +1,44 @@
+From f4dc0fdb2f21927c4916d7ad30d38a76ba0580a2 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Sat, 10 Mar 2018 10:31:55 -0600
+Subject: [PATCH] "0001-releasetools-don-t-put-boot.img-in-zip
+ _______________________________
+
+*Previous From f335245e27d31bb1da2f086539031bae5de83557 Mon Sep 17 00:00:00 2001
+*Previous From: Meticulus <theonejohnnyd@gmail.com>
+*Previous Date: Sat, 10 Mar 2018 10:18:11 -0600
+*Previous Subject: [PATCH] releasetools: don't put boot.img in zip
+*"
+---
+ tools/releasetools/ota_from_target_files.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tools/releasetools/ota_from_target_files.py b/tools/releasetools/ota_from_target_files.py
+index 31e197b..81e0f60 100755
+--- a/tools/releasetools/ota_from_target_files.py
++++ b/tools/releasetools/ota_from_target_files.py
+@@ -591,8 +591,8 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
+     vendor_diff = common.BlockDifference("vendor", vendor_tgt)
+     vendor_diff.WriteScript(script, output_zip)
+ 
+-  common.CheckSize(boot_img.data, "boot.img", OPTIONS.info_dict)
+-  common.ZipWriteStr(output_zip, "boot.img", boot_img.data)
++  #common.CheckSize(boot_img.data, "boot.img", OPTIONS.info_dict)
++  #common.ZipWriteStr(output_zip, "boot.img", boot_img.data)
+ 
+   if OPTIONS.backuptool:
+     script.ShowProgress(0.02, 10)
+@@ -604,8 +604,8 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
+   script.RunCleanCache()
+   script.Unmount("/system")
+ 
+-  script.ShowProgress(0.05, 5)
+-  script.WriteRawImage("/boot", "boot.img")
++  #script.ShowProgress(0.05, 5)
++  #script.WriteRawImage("/boot", "boot.img")
+ 
+   script.ShowProgress(0.2, 10)
+   device_specific.FullOTA_InstallEnd()
+-- 
+2.7.4
+

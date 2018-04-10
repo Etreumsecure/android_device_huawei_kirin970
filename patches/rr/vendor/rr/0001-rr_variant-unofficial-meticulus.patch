@@ -1,0 +1,114 @@
+From ab5b8e8d266f033b29914ef3a112ed543f7771f9 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Fri, 2 Mar 2018 08:14:43 -0600
+Subject: [PATCH] "0001-rr_variant-unofficial-meticulus
+ _______________________________
+
+*Previous From ec540fdba22a60700c5cf157fb1bf74f7f37e507 Mon Sep 17 00:00:00 2001
+*Previous From: Meticulus <theonejohnnyd@gmail.com>
+*Previous Date: Wed, 28 Feb 2018 09:18:21 -0600
+*Previous Subject: [PATCH] "0001-rr_variant-unofficial-meticulus
+*_______________________________
+*
+**Previous From 0ea095c8b583920efa9f13f499cc26537d50d2c2 Mon Sep 17 00:00:00 2001
+**Previous From: Meticulus <theonejohnnyd@gmail.com>
+**Previous Date: Mon, 27 Nov 2017 08:17:34 -0600
+**Previous Subject: [PATCH] "0001-rr_variant-unofficial-meticulus
+**_______________________________
+**
+***Previous From 62827aa279c220ff8eb7dc72f653392906985787 Mon Sep 17 00:00:00 2001
+***Previous From: Meticulus <theonejohnnyd@gmail.com>
+***Previous Date: Sun, 18 Jun 2017 06:54:24 -0500
+***Previous Subject: [PATCH] rr_variant: unofficial -> meticulus
+***""
+*
+*Change-Id: I3fc5c0e76abbdb03c7df2711e6de98388d653aa0"
+
+Change-Id: Iaae98563df0c3e7f00a6ee34bd37f195d177480d
+---
+ config/common.mk    | 3 +--
+ tools/changelog.sh  | 2 +-
+ tools/rr_root.sh    | 6 +++++-
+ tools/rr_variant.sh | 8 ++++----
+ 4 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/config/common.mk b/config/common.mk
+index 93ab41e..a37e7b4 100644
+--- a/config/common.mk
++++ b/config/common.mk
+@@ -165,8 +165,7 @@ PRODUCT_PACKAGES += \
+     WeatherProvider \
+     OmniJaws \
+     OmniStyle \
+-    ResurrectionOTA \
+-    ResurrectionStats
++    ResurrectionOTA
+ 
+ # Berry styles
+ PRODUCT_PACKAGES += \
+diff --git a/tools/changelog.sh b/tools/changelog.sh
+index d8212e5..40264fc 100755
+--- a/tools/changelog.sh
++++ b/tools/changelog.sh
+@@ -51,7 +51,7 @@ echo -e "";
+ echo -e ${cya}" ▼ Type a number"${txtrst}
+ echo -e "";
+ # use 'export days_to_log=5' before '. build/envsetup.sh' were 5 is days to log
+-read -r -t 30 days_to_log || days_to_log=7
++days_to_log=0
+ fi
+ echo >> $Changelog;
+ echo " ▼ $source_name Ver 6.0.0 Changelog"    >> $Changelog;
+diff --git a/tools/rr_root.sh b/tools/rr_root.sh
+index 4f0503b..cef3cec 100755
+--- a/tools/rr_root.sh
++++ b/tools/rr_root.sh
+@@ -34,7 +34,11 @@ echo -e "";
+ echo -e ${cya}" ▼ Pick a number"${txtrst}
+ echo -e "";
+ $normal
+-read -t 30 askvariant
++if [[ "$WITH_SU" == "true" ]]; then
++askvariant=0
++else
++askvariant=1
++fi
+ sleep 1
+ if [ "$askvariant" == "0" ];
+ then
+diff --git a/tools/rr_variant.sh b/tools/rr_variant.sh
+index 1461b29..5c2ed15 100755
+--- a/tools/rr_variant.sh
++++ b/tools/rr_variant.sh
+@@ -26,7 +26,7 @@ echo -e ${ylw}"\n\n ▼ Which build-type do you want to choose?\n"${txtrst}
+ echo -e "";
+ echo -e ${blu}" 〉 1- Official "${txtrst}${red}"    ︱ Only for the official builds by the maintainers"${txtrst}
+ echo -e "";
+-echo -e ${blu}" 〉 2- Unofficial "${txtrst}${red}"  ︱ For the unofficial builds"${txtrst}
++echo -e ${blu}" 〉 2- CodeOfHonor "${txtrst}${red}"  ︱ For the CoH builds"${txtrst}
+ echo -e "";
+ echo -e ${blu}" 〉 3- Nightly "${txtrst}${red}"     ︱ Only for the official daily builds by the maintainers"${txtrst}
+ echo -e "";
+@@ -45,7 +45,7 @@ echo -e "";
+ echo -e ${cya}" ▼ Pick a number"${txtrst}
+ echo -e "";
+ $normal
+-read -t 30 askvariant
++askvariant=2
+ sleep 1
+ if [ "$askvariant" == "1" ]
+ then
+@@ -60,8 +60,8 @@ fi
+ if [ "$askvariant" == "2" ]
+ then
+ echo -e "";
+-echo -e ${blu}" ▪ Building unofficial variant "${txtrst}
+-export RR_BUILDTYPE=Unofficial
++echo -e ${blu}" ▪ Building CodeOfHonor variant "${txtrst}
++export RR_BUILDTYPE=CodeOfHonor
+ echo -e "";
+ echo -e "";
+ $normal
+-- 
+2.7.4
+

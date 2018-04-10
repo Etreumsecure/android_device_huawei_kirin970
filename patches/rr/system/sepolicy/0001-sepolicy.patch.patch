@@ -1,0 +1,161 @@
+From 0546dc4fc15f41abecd90bc36a2d1e6037b9ac32 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Thu, 15 Mar 2018 17:10:05 -0500
+Subject: [PATCH] "0001-sepolicy.patch _______________________________
+
+*Previous From 516188b27d399d080f383f9db3d64d4398984e60 Mon Sep 17 00:00:00 2001
+*Previous From: Meticulus <theonejohnnyd@gmail.com>
+*Previous Date: Mon, 12 Mar 2018 14:31:04 -0500
+*Previous Subject: [PATCH] "0001-sepolicy.patch _______________________________
+*
+**Previous From b056660221b5b3ba92db79f6d767e3e405eb9e94 Mon Sep 17 00:00:00 2001
+**Previous From: Meticulus <theonejohnnyd@gmail.com>
+**Previous Date: Wed, 28 Feb 2018 09:13:41 -0600
+**Previous Subject: [PATCH] "0001-sepolicy-patch _______________________________
+**
+***Previous From 22c3cd80cb3cce0a28cb3db4318ddd275ac9afb6 Mon Sep 17 00:00:00 2001
+***Previous From: Meticulus <theonejohnnyd@gmail.com>
+***Previous Date: Mon, 18 Dec 2017 09:12:07 -0600
+***Previous Subject: [PATCH] "0001-sepolicy-patch _______________________________
+***
+****Previous From 103292bf70cc43bf245ecb52ccff6b818ba4798e Mon Sep 17 00:00:00 2001
+****Previous From: Meticulus <theonejohnnyd@gmail.com>
+****Previous Date: Sun, 17 Dec 2017 05:11:50 -0600
+****Previous Subject: [PATCH] "0001-sepolicy-patch _______________________________
+****
+*****Previous From d1cd27a9a3d7a837dc4486935b4bf577aec35226 Mon Sep 17 00:00:00 2001
+*****Previous From: Meticulus <theonejohnnyd@gmail.com>
+*****Previous Date: Tue, 12 Dec 2017 05:29:48 -0600
+*****Previous Subject: [PATCH] "0001-sepolicy-patch _______________________________
+*****
+******Previous From c29de7d512886795240f794124598d597f07dd12 Mon Sep 17 00:00:00 2001
+******Previous From: Meticulus <theonejohnnyd@gmail.com>
+******Previous Date: Fri, 1 Dec 2017 04:47:53 -0600
+******Previous Subject: [PATCH] "0001-sepolicy-patch _______________________________
+******
+*******Previous From b469cd826322cec0d92188c9790ca3dec2c3e557 Mon Sep 17 00:00:00 2001
+*******Previous From: Meticulus <theonejohnnyd@gmail.com>
+*******Previous Date: Sat, 8 Apr 2017 15:52:17 -0500
+*******Previous Subject: [PATCH] 0001-sepolicy-patch
+*******
+*******Change-Id: I62d72022d19714ac8a719d22bc651a3348dabe94"
+******
+******Change-Id: Id916b91b48d9a6de5a7141a64a47941d99488dca""""""
+---
+ private/priv_app.te  |  6 ++--
+ vendor/file_contexts | 78 ++++++++++++++++++++++++++--------------------------
+ 2 files changed, 42 insertions(+), 42 deletions(-)
+
+diff --git a/private/priv_app.te b/private/priv_app.te
+index 60fb411..9ecd304 100644
+--- a/private/priv_app.te
++++ b/private/priv_app.te
+@@ -136,9 +136,9 @@ neverallow priv_app service_manager_type:service_manager add;
+ 
+ # Do not allow privileged apps to connect to the property service
+ # or set properties. b/10243159
+-neverallow priv_app property_socket:sock_file write;
+-neverallow priv_app init:unix_stream_socket connectto;
+-neverallow priv_app property_type:property_service set;
++# neverallow priv_app property_socket:sock_file write;
++# neverallow priv_app init:unix_stream_socket connectto;
++# neverallow priv_app property_type:property_service set;
+ 
+ # Do not allow priv_app to be assigned mlstrustedsubject.
+ # This would undermine the per-user isolation model being
+diff --git a/vendor/file_contexts b/vendor/file_contexts
+index 522e4bf..d20255a 100644
+--- a/vendor/file_contexts
++++ b/vendor/file_contexts
+@@ -1,49 +1,49 @@
+ #############################
+ # Default HALs
+ #
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.audio@2\.0-service          u:object_r:hal_audio_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.bluetooth@1\.0-service      u:object_r:hal_bluetooth_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service u:object_r:hal_fingerprint_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.boot@1\.0-service           u:object_r:hal_bootctl_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.broadcastradio@1\.1-service u:object_r:hal_broadcastradio_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.camera\.provider@2\.4-service          u:object_r:hal_camera_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.configstore@1\.[0-9]+-service    u:object_r:hal_configstore_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.contexthub@1\.0-service     u:object_r:hal_contexthub_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.0-service            u:object_r:hal_drm_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.cas@1\.0-service            u:object_r:hal_cas_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.dumpstate@1\.0-service      u:object_r:hal_dumpstate_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.gatekeeper@1\.0-service     u:object_r:hal_gatekeeper_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.gnss@1\.0-service           u:object_r:hal_gnss_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.graphics\.allocator@2\.0-service   u:object_r:hal_graphics_allocator_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.graphics\.composer@2\.1-service    u:object_r:hal_graphics_composer_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.health@1\.0-service         u:object_r:hal_health_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.ir@1\.0-service             u:object_r:hal_ir_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.keymaster@3\.0-service      u:object_r:hal_keymaster_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service          u:object_r:hal_light_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.memtrack@1\.0-service       u:object_r:hal_memtrack_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.0-service            u:object_r:hal_nfc_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.media\.omx@1\.0-service            u:object_r:mediacodec_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.0-service          u:object_r:hal_power_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.sensors@1\.0-service        u:object_r:hal_sensors_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/rild                                           u:object_r:rild_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.thermal@1\.[01]-service        u:object_r:hal_thermal_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.tv\.cec@1\.0-service        u:object_r:hal_tv_cec_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.tv\.input@1\.0-service      u:object_r:hal_tv_input_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.usb@1\.0-service            u:object_r:hal_usb_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@1\.0-service       u:object_r:hal_vibrator_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.vr@1\.0-service             u:object_r:hal_vr_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.wifi\.offload@1\.0-service  u:object_r:hal_wifi_offload_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/android\.hardware\.wifi@1\.0-service           u:object_r:hal_wifi_default_exec:s0
+-/(vendor|system/vendor)/bin/hw/wpa_supplicant                                 u:object_r:hal_wifi_supplicant_default_exec:s0
+-/(vendor|system/vendor)/bin/hostapd                                           u:object_r:hostapd_exec:s0
+-/(vendor|system/vendor)/bin/vndservicemanager                                 u:object_r:vndservicemanager_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.audio@2\.0-service          u:object_r:hal_audio_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.bluetooth@1\.0-service      u:object_r:hal_bluetooth_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service u:object_r:hal_fingerprint_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.boot@1\.0-service           u:object_r:hal_bootctl_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.broadcastradio@1\.1-service u:object_r:hal_broadcastradio_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.camera\.provider@2\.4-service          u:object_r:hal_camera_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.configstore@1\.[0-9]+-service    u:object_r:hal_configstore_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.contexthub@1\.0-service     u:object_r:hal_contexthub_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.drm@1\.0-service            u:object_r:hal_drm_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.cas@1\.0-service            u:object_r:hal_cas_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.dumpstate@1\.0-service      u:object_r:hal_dumpstate_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.gatekeeper@1\.0-service     u:object_r:hal_gatekeeper_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.gnss@1\.0-service           u:object_r:hal_gnss_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.graphics\.allocator@2\.0-service   u:object_r:hal_graphics_allocator_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.graphics\.composer@2\.1-service    u:object_r:hal_graphics_composer_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.health@1\.0-service         u:object_r:hal_health_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.ir@1\.0-service             u:object_r:hal_ir_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.keymaster@3\.0-service      u:object_r:hal_keymaster_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.light@2\.0-service          u:object_r:hal_light_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.memtrack@1\.0-service       u:object_r:hal_memtrack_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.nfc@1\.0-service            u:object_r:hal_nfc_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.media\.omx@1\.0-service            u:object_r:mediacodec_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.power@1\.0-service          u:object_r:hal_power_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.sensors@1\.0-service        u:object_r:hal_sensors_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/rild                                           u:object_r:rild_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.thermal@1\.[01]-service        u:object_r:hal_thermal_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.tv\.cec@1\.0-service        u:object_r:hal_tv_cec_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.tv\.input@1\.0-service      u:object_r:hal_tv_input_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.usb@1\.0-service            u:object_r:hal_usb_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.vibrator@1\.0-service       u:object_r:hal_vibrator_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.vr@1\.0-service             u:object_r:hal_vr_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.wifi\.offload@1\.0-service  u:object_r:hal_wifi_offload_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/android\.hardware\.wifi@1\.0-service           u:object_r:hal_wifi_default_exec:s0
++/(vendor|system/vendor|system)/bin/hw/wpa_supplicant                                 u:object_r:hal_wifi_supplicant_default_exec:s0
++/(vendor|system/vendor|system)/bin/hostapd                                           u:object_r:hostapd_exec:s0
++/(vendor|system/vendor|system)/bin/vndservicemanager                                 u:object_r:vndservicemanager_exec:s0
+ 
+ #############################
+ # Same process HALs installed by platform into /vendor
+ #
+-/(vendor|system/vendor)/lib(64)?/hw/android\.hardware\.graphics\.mapper@2\.0-impl\.so u:object_r:same_process_hal_file:s0
+-/(vendor|system/vendor)/lib(64)?/hw/android\.hardware\.renderscript@1\.0-impl\.so     u:object_r:same_process_hal_file:s0
+-/(vendor|system/vendor)/lib(64)?/hw/gralloc\.default\.so                              u:object_r:same_process_hal_file:s0
++/(vendor|system/vendor|system)/lib(64)?/hw/android\.hardware\.graphics\.mapper@2\.0-impl\.so u:object_r:same_process_hal_file:s0
++/(vendor|system/vendor|system)/lib(64)?/hw/android\.hardware\.renderscript@1\.0-impl\.so     u:object_r:same_process_hal_file:s0
++/(vendor|system/vendor|system)/lib(64)?/hw/gralloc\.default\.so                              u:object_r:same_process_hal_file:s0
+ 
+ #############################
+ # Data files
+-- 
+2.7.4
+

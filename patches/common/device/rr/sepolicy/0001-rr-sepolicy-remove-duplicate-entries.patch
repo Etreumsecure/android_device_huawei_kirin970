@@ -1,0 +1,22 @@
+From 486f7038f119ac57b2b2270f818cde7e8da913c4 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Sun, 11 Mar 2018 06:46:59 -0500
+Subject: [PATCH] rr-sepolicy: remove duplicate entries.
+
+-These entries must exist on the vendor side of things too.
+---
+ common/private/genfs_contexts | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/common/private/genfs_contexts b/common/private/genfs_contexts
+index 72579a3..6210791 100644
+--- a/common/private/genfs_contexts
++++ b/common/private/genfs_contexts
+@@ -1,4 +1,2 @@
+-genfscon exfat / u:object_r:vfat:s0
+-genfscon fuseblk / u:object_r:fuse:s0
+ genfscon ntfs / u:object_r:vfat:s0
+ genfscon sdfat / u:object_r:vfat:s0
+-- 
+2.7.4
+

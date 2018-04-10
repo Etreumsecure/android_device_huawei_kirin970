@@ -1,0 +1,39 @@
+From d1542ec27485cc4d466eea6a0b150e1d51077987 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Sun, 8 Apr 2018 14:49:03 -0500
+Subject: [PATCH] linker: add odm to default paths.
+
+Change-Id: I01cac334fd67aef48fe69dbf66f92e29785190bf
+---
+ linker/linker.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/linker/linker.cpp b/linker/linker.cpp
+index 6ecb9eb..9d75612 100644
+--- a/linker/linker.cpp
++++ b/linker/linker.cpp
+@@ -88,11 +88,13 @@ static const char* const kLdConfigFilePath = "/system/etc/ld.config.txt";
+ #if defined(__LP64__)
+ static const char* const kSystemLibDir     = "/system/lib64";
+ static const char* const kVendorLibDir     = "/vendor/lib64";
++static const char* const kOdmLibDir	   = "/odm/lib64";
+ static const char* const kAsanSystemLibDir = "/data/asan/system/lib64";
+ static const char* const kAsanVendorLibDir = "/data/asan/vendor/lib64";
+ #else
+ static const char* const kSystemLibDir     = "/system/lib";
+ static const char* const kVendorLibDir     = "/vendor/lib";
++static const char* const kOdmLibDir        = "/odm/lib";
+ static const char* const kAsanSystemLibDir = "/data/asan/system/lib";
+ static const char* const kAsanVendorLibDir = "/data/asan/vendor/lib";
+ #endif
+@@ -102,6 +104,7 @@ static const char* const kAsanLibDirPrefix = "/data/asan";
+ static const char* const kDefaultLdPaths[] = {
+   kSystemLibDir,
+   kVendorLibDir,
++  kOdmLibDir,
+   nullptr
+ };
+ 
+-- 
+2.7.4
+
